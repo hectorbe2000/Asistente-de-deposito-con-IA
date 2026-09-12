@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    background-color: #EDF8F5;
+    color: #0B1F1D;
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #E0F5F0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #88CCc7;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0AADA0;
+  }
+
+  select option {
+    background-color: #FFFFFF;
+    color: #0B1F1D;
+  }
+}
+
+@layer components {
+  /* Botón primario con gradiente y sombra */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5
+           bg-gradient-to-r from-primary to-[#0D9E93]
+           text-white font-semibold text-sm rounded-xl
+           shadow-btn hover:shadow-btn-lg
+           hover:-translate-y-px active:translate-y-0
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-y-0;
+  }
+
+  /* Botón secundario / outline */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5
+           bg-white border border-border text-text font-medium text-sm rounded-xl
+           shadow-card hover:border-primary/50 hover:text-primary hover:shadow-card-md
+           hover:-translate-y-px active:translate-y-0
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Botón peligro */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5
+           bg-danger/10 border border-danger/30 text-danger font-medium text-sm rounded-xl
+           hover:bg-danger hover:text-white hover:border-danger
+           transition-all duration-200;
+  }
+
+  /* Input base */
+  .input-base {
+    @apply w-full bg-white border border-border rounded-xl px-4 py-2.5 text-sm text-text
+           placeholder-muted/60
+           focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20
+           transition-all duration-200 shadow-card;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-border rounded-2xl shadow-card;
+  }
+
+  .card-md {
+    @apply bg-white border border-border rounded-2xl shadow-card-md;
+  }
+}
+
+@layer utilities {
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Evitar que el canvas de R3F bloquee scroll en tablet */
+canvas {
+  touch-action: none;
+}
+
+/* ── Animaciones ─────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes voice-wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50%       { transform: scaleY(1); }
+}
+
+@keyframes location-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-4px); }
+}
+
+.animate-pulse-ring    { animation: pulse-ring    1.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+.animate-voice-wave    { animation: voice-wave    0.6s ease-in-out infinite; }
+.animate-location-pulse{ animation: location-pulse 1.5s ease-in-out infinite; }
+.animate-fade-in-up    { animation: fade-in-up    0.25s ease-out forwards; }
+.animate-float-up      { animation: float-up       3s  ease-in-out infinite; }
+
+.skeleton {
+  background: linear-gradient(90deg, #E0F5F0 25%, #C8EDE8 50%, #E0F5F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
