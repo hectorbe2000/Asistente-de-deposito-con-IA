@@ -1,8 +1,8 @@
 # Cómo arrancar el sistema
 
-## 1. Configurar la API key de Anthropic
+## 1. Configurar la API key 
 
-Abrí `backend/.env` y reemplazá `tu_api_key_aqui` con tu API key real de Anthropic.
+Abrí `backend/.env` y reemplazá `tu_api_key_aqui` con tu API key real
 
 ## 2. Instalar dependencias del backend
 
